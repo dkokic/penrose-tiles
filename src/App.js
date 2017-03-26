@@ -53,6 +53,12 @@ class App extends Component {
             </g>
           </svg>
         </div>
+        <div className="App-footer">
+          <span>Created by </span>
+          <a href="http://kodra.net">Draško Kokić</a>
+          <span> • </span>
+          <a href="https://github.com/dkokic/penrose-tiles">Github Repo</a>
+        </div>
       </div>
     );
   }

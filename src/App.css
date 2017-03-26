@@ -22,3 +22,17 @@
 .App-content {
   font-size: large;
 }
+
+.App-footer {
+  font-size: large;
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+}
+
+.App-footer a {
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 3px solid;
+  transition: .1s all;
+}
