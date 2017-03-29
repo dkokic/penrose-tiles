@@ -14,22 +14,21 @@ class Pentagon extends React.Component {
   scale = 1 / (1 - 2 * Math.cos(Math.PI * 144 / 180))
 
   render() {
-    return (
-      <g>
-        <polygon fill="white" stroke="black" points={this.makeString(this.points)} />
-        <g transform={`scale(${this.scale})`}>
-          <g transform={`rotate(${180})`}>
-            <polygon fill="white" stroke="black" points={this.makeString(this.points)} />
-          </g>
-          {
-            this.points.map((p) => (
-              <g transform={`translate(${p.x * (1 / this.scale - 1)} ${p.y * (1 / this.scale - 1)})`}>
-                <polygon fill="white" stroke="black" points={this.makeString(this.points)} />
-              </g>
-            ))
-          }
+    return this.props.depth > 0 ? (
+      <g transform={`scale(${this.scale})`}>
+        <g transform={`rotate(${180})`}>
+          <Pentagon depth={this.props.depth - 1} />
         </g>
+        {
+          this.points.map((p, index) => (
+            <g key={index} transform={`translate(${p.x * (1 / this.scale - 1)} ${p.y * (1 / this.scale - 1)})`}>
+              <Pentagon depth={this.props.depth - 1} />
+            </g>
+          ))
+        }
       </g>
+    ) : (
+      <polygon fill="white" stroke="black" points={this.makeString(this.points)} />
     )
   }
 }

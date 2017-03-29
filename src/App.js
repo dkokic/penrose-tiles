@@ -28,7 +28,8 @@ class App extends Component {
               }{
                 [-2, -1, 0, 1, 2].map((i) => (<line key={`x${i}`} stroke="black" x1="-300" y1={i * 100} x2="300" y2={i * 100} />))
               }
-              <Pentagon/>
+              <Pentagon depth={0} />
+              <Pentagon depth={1} />
             </g>
           </svg>
         </div>
