@@ -4,11 +4,18 @@ import './App.css';
 import Pentagon from "./Pentagon";
 
 class App extends Component {
+  state = {
+      depth: 0
+  }
   svg = {
     width: 1280,
     height: 600
   }
   angle = -90
+
+  componentDidMount() {
+    [1, 2, 3, 4].forEach((i) => setTimeout(() => this.setState({ depth: i }), 1000 * i))
+  }
 
   render() {
     return (
@@ -28,8 +35,7 @@ class App extends Component {
               }{
                 [-2, -1, 0, 1, 2].map((i) => (<line key={`x${i}`} stroke="black" x1="-300" y1={i * 100} x2="300" y2={i * 100} />))
               }
-              <Pentagon depth={0} />
-              <Pentagon depth={1} />
+              <Pentagon depth={this.state.depth} />
             </g>
           </svg>
         </div>
